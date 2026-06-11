@@ -44,6 +44,10 @@ R=reject if missing entry|sl
 
 Per-message "P+R:" = 4t vs 55t verbose; +caching -> -92/93% at 10+ messages.
 
+VALIDATED end-to-end (tests/dtl_codebook_test.py, exact-match vs ground truth): codebook accuracy = verbose accuracy = 100% on 5 cases incl. REJECT rule; ~72t->~10t/msg (-86%).
+
+Production wiring: scripts/dtl_middleware.py — dtl_messages(payload,codebook,macro) builds [system=codebook(cacheable), user="macro: payload"]; log_usage(resp.usage,csv,baseline) tracks saved-%.
+
 ## L4 output mode (activate on: "dtl output"/"less tokens"/"output denso")
 
 Apply L1 to own responses: no pleasantries/hedging, verb-first, lowercase prose, ascii operators, answer then stop. NEVER compress: code blocks, error messages (quote exact), commits/PRs, technical terms. Measured: -65/76% output tokens. Output compression compounds: every saved output token is also saved from history on every later turn.
