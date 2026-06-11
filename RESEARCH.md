@@ -42,8 +42,12 @@ Final: react_form 8.5, sql_query 9.0, bug_explain 8.5 — **extreme mode validat
 Structural fix adopted: every `claude -p` call now runs in an isolated temp cwd (no cross-run contamination).
 Lesson: agentic test harnesses MUST isolate working directories; a single leftover file can flip a blind judgment.
 
+## Phase 9 — L3 end-to-end validation (tests/dtl_codebook_test.py)
+Closed the biggest gap: codebook macros vs verbose instruction, exact-match vs ground truth (no judge bias), 5 trading-signal cases incl. a missing-SL REJECT case, isolated cwd per call.
+Result: **verbose 100% = codebook 100%** — all fields extracted, REJECT rule fired correctly. Macro-indirection loses nothing on this task class. Prompt economy: ~72t -> ~10t per message (-86%) with the codebook cached in system. Middleware (`scripts/dtl_middleware.py`) smoke-tested: message shaping, payload compression (numbers preserved), CSV logging with saved-% math verified; real o200k measurement 71t -> 17t (-76%) per message on the signal-parser flow.
+
 ## Identified gaps (from self-review)
-1. L3 codebook had zero end-to-end quality validation despite carrying the biggest claim -> exact-match harness added (tests/dtl_codebook_test.py)
+1. L3 codebook had zero end-to-end quality validation despite carrying the biggest claim -> exact-match harness added (tests/dtl_codebook_test.py), then run: 100%=100%, see phase 9
 2. Eval set small (n=3) and simple -> extended complex-task eval planned
 3. All token math on o200k: exact for OpenAI, proxy for Claude -> stated in README Limitations
 4. "Novel" claims softened to "to our knowledge"; template/greedy extraction has adjacent prior art

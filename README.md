@@ -98,7 +98,7 @@ This started as "invent a compressed language for AI" and survived contact with 
 
 - **Token counts use o200k_base** — exact for OpenAI models, a *proxy* for Claude (Anthropic's tokenizer is unpublished). Qualitative findings transfer; exact percentages may shift.
 - **Validation scope**: 3 tasks, 2-3 runs, judge = same model family. It's a strong sanity check, not a benchmark paper. Complex multi-constraint tasks under extreme mode: untested.
-- **L3 codebook**: quality harness included (`tests/dtl_codebook_test.py`, exact-match vs ground truth, no judge bias) — run it on your model before production use.
+- **L3 codebook**: validated end-to-end (`tests/dtl_codebook_test.py`, exact-match vs ground truth, no judge bias) — **100% accuracy verbose = 100% codebook** on 5 signal-parsing cases incl. the REJECT rule, at -86% prompt tokens per message. Re-run it on your model before production use.
 - **Savings depend on where your tokens go**: huge on recurring API pipelines and data payloads, modest on agentic coding sessions where tool results dominate.
 
 ## License
