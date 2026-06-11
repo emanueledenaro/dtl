@@ -42,5 +42,11 @@ Final: react_form 8.5, sql_query 9.0, bug_explain 8.5 — **extreme mode validat
 Structural fix adopted: every `claude -p` call now runs in an isolated temp cwd (no cross-run contamination).
 Lesson: agentic test harnesses MUST isolate working directories; a single leftover file can flip a blind judgment.
 
+## Identified gaps (from self-review)
+1. L3 codebook had zero end-to-end quality validation despite carrying the biggest claim -> exact-match harness added (tests/dtl_codebook_test.py)
+2. Eval set small (n=3) and simple -> extended complex-task eval planned
+3. All token math on o200k: exact for OpenAI, proxy for Claude -> stated in README Limitations
+4. "Novel" claims softened to "to our knowledge"; template/greedy extraction has adjacent prior art
+
 ## Open frontier
 The 60-70% of agentic-session tokens (tool results, file reads) remain uncompressed. Next: a Claude Code PostToolUse hook serving files in "skim mode" (signatures+docstrings) during exploration, exact mode only for edits.

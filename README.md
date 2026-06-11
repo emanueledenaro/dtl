@@ -78,7 +78,7 @@ mine_codebook(your_prompt_corpus)    # auto-extracts macros: -64% asymptotic
 dtl/
 ├── SKILL.md           # the Claude skill (root placement required by npx skills add)
 ├── references/        # rewrite table + codebook method, loaded on demand by the skill
-├── scripts/           # dtl_engine.py (model-free compressor) + count_tokens.py
+├── scripts/           # dtl_engine.py (model-free compressor) + middleware + count_tokens.py
 ├── benchmarks/        # the experiments behind every number in this README
 ├── tests/             # blind-judge A/B harnesses + CI unit tests
 ├── RESEARCH.md        # lab notebook: 8 phases, failures included
@@ -93,6 +93,13 @@ Every rule needs a token measurement and, if potentially lossy, a blind-judge sc
 ## The research journey
 
 This started as "invent a compressed language for AI" and survived contact with reality: the symbolic approach failed measurably, the abbreviation approach turned out pointless, and the winning strategy emerged from vocabulary mining + amortized codebooks. Full lab notebook with every experiment, failure and fix: [RESEARCH.md](RESEARCH.md).
+
+## Limitations (read this before quoting the numbers)
+
+- **Token counts use o200k_base** — exact for OpenAI models, a *proxy* for Claude (Anthropic's tokenizer is unpublished). Qualitative findings transfer; exact percentages may shift.
+- **Validation scope**: 3 tasks, 2-3 runs, judge = same model family. It's a strong sanity check, not a benchmark paper. Complex multi-constraint tasks under extreme mode: untested.
+- **L3 codebook**: quality harness included (`tests/dtl_codebook_test.py`, exact-match vs ground truth, no judge bias) — run it on your model before production use.
+- **Savings depend on where your tokens go**: huge on recurring API pipelines and data payloads, modest on agentic coding sessions where tool results dominate.
 
 ## License
 

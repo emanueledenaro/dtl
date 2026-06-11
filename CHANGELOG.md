@@ -9,6 +9,14 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) · versioning: 
 - Claude Code PostToolUse hook serving files in "skim mode" (signatures + docstrings) during exploration — targets the 60-70% of agentic-session tokens that DTL does not yet touch (see [RESEARCH.md](RESEARCH.md), *Open frontier*).
 - Relay pipeline integration.
 
+## [1.1.0] — 2026-06-11
+
+### Added
+- **Middleware** (`scripts/dtl_middleware.py`): drop-in wrapper for OpenAI/Anthropic pipelines — codebook in system message (provider-cacheable stable prefix), optional payload compression, CSV usage logging with saved-% vs baseline.
+- **L3 quality harness** (`tests/dtl_codebook_test.py`): end-to-end exact-match validation vs ground truth (no judge bias) — verbose instruction vs codebook+macro on trading-signal parsing, includes a REJECT rule case.
+- **README "Limitations" section**: o200k is exact for OpenAI but a proxy for Claude; validation scope stated; savings depend on token distribution.
+- **RESEARCH.md "Identified gaps"**: self-review — L3 validation gap (now closed), small eval set, tokenizer proxy, "novel" claims softened.
+
 ## [1.0.0] — 2026-06-11
 
 ### Added
@@ -20,5 +28,6 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) · versioning: 
 - **A/B harnesses** (`tests/`): verbose vs DTL with blind judge, runs on a Claude Code subscription (no API key); each call in an isolated temp cwd to prevent cross-run contamination.
 - **Research notebook** (`RESEARCH.md`): all 8 phases, failures included.
 
-[Unreleased]: https://github.com/emanueledenaro/dtl/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/emanueledenaro/dtl/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/emanueledenaro/dtl/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/emanueledenaro/dtl/releases/tag/v1.0.0
