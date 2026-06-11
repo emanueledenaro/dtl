@@ -37,7 +37,7 @@ We mined the full o200k vocabulary (~200k tokens) and benchmarked everything. Fo
 ## Install (as a Claude skill)
 
 ```bash
-npx skills add SeriumTW/dtl
+npx skills add emanueledenaro/dtl
 ```
 Or download `SKILL.md` + `references/` + `scripts/` into your skills folder.
 
@@ -74,4 +74,4 @@ This started as "invent a compressed language for AI" and survived contact with 
 
 ## License
 
-MIT — © 2026 Emanuele Denaro ([@SeriumTW](https://github.com/SeriumTW))
+MIT — © 2026 Emanuele Denaro ([@emanueledenaro](https://github.com/emanueledenaro))
