@@ -1,5 +1,9 @@
 # 🧬 DTL — Dense Token Language
 
+[![CI](https://github.com/emanueledenaro/dtl/actions/workflows/ci.yml/badge.svg)](https://github.com/emanueledenaro/dtl/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/emanueledenaro/dtl)](https://github.com/emanueledenaro/dtl/releases)
+
 **Stop abbreviating. Start deleting.**
 
 A prompt-compression language built on empirical tokenizer research — not invented symbols, not caveman grunts. **-70% tokens on typical prompts (lossless), -82% extreme, -93% on recurring pipelines.** Validated with blind-judge A/B testing on real models.
@@ -67,6 +71,24 @@ mine_codebook(your_prompt_corpus)    # auto-extracts macros: -64% asymptotic
 | Input prompts | 0% | -65/82% |
 | Structured data | 0% | -60% |
 | Recurring pipelines | 0% | -93% |
+
+## Repository structure
+
+```
+dtl/
+├── SKILL.md           # the Claude skill (root placement required by npx skills add)
+├── references/        # rewrite table + codebook method, loaded on demand by the skill
+├── scripts/           # dtl_engine.py (model-free compressor) + count_tokens.py
+├── benchmarks/        # the experiments behind every number in this README
+├── tests/             # blind-judge A/B harnesses + CI unit tests
+├── RESEARCH.md        # lab notebook: 8 phases, failures included
+├── CHANGELOG.md
+└── CONTRIBUTING.md    # rule-proposal protocol: numbers over opinions
+```
+
+## Contributing
+
+Every rule needs a token measurement and, if potentially lossy, a blind-judge score ≥8. Falsifying an existing rule counts as a contribution. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## The research journey
 

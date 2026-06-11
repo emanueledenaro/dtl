@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use DTL in your research or tooling, please cite it as below."
+type: software
+title: "DTL — Dense Token Language"
+abstract: "Prompt-compression language built on empirical o200k tokenizer research: -70% tokens on typical prompts (lossless), -82% extreme, -93% on recurring pipelines via auto-mined codebooks. Validated with blind-judge A/B testing."
+authors:
+  - given-names: Emanuele
+    family-names: Denaro
+repository-code: "https://github.com/emanueledenaro/dtl"
+url: "https://github.com/emanueledenaro/dtl"
+license: MIT
+version: 1.0.0
+date-released: 2026-06-11
+keywords:
+  - prompt-compression
+  - tokenizer
+  - llm
+  - claude
+  - token-optimization
